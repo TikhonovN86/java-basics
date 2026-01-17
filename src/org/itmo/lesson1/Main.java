@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
     }
 
     private static void task1() {
@@ -17,11 +16,13 @@ public class Main {
     private static void task2() {
         double z = (46 + 10) * ((double) 10 / 3);
         double x = (double) (29) * (4) * (-15);
+        System.out.println(z);
+        System.out.println(x);
     }
 
     private static void task3() {
-        int number = 10500;
-        double result = (double) (number / 10) / 10;
+        int number = 888;
+        double result = ((double) number / 10) / 10;
 
         System.out.println(
                 "result = " + result
