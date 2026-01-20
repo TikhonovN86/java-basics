@@ -5,33 +5,46 @@ import java.util.Scanner;
 
 public class PartOne {
     public static void main(String[] args) {
-//        System.out.println("Задание 1:");
-//        task1();
-//        System.out.println("----------------------------");
+        System.out.println("Задание 1:");
+        task1();
+        System.out.println("----------------------------");
 
-//        System.out.println("Задание 2:");
-//        task2();
-//        System.out.println("----------------------------");
+        System.out.println("Задание 2:");
+        task2();
+        System.out.println("----------------------------");
 
-//        System.out.println("Задание 3:");
-//        System.out.println("Результат: " + task3());
-//        System.out.println("----------------------------");
+        System.out.println("Задание 3:");
+        System.out.println("Результат: " + task3());
+        System.out.println("----------------------------");
 
-//        System.out.println("Задание 4:");
-//        System.out.println("Результат: " + task4());
-//        System.out.println("----------------------------");
+        System.out.println("Задание 4:");
+        System.out.println("Результат: " + task4());
+        System.out.println("----------------------------");
 
         System.out.println("Задание 5:");
-        int[] firstArray = {3, -3, 7, 4, 5, 4, 3};
-        int[] secondArray = {0, -3, 7, 4, 5, 4, 3};
-        task5(firstArray);
-        task5(secondArray);
+        int[] firstArray5 = {3};
+        int[] secondArray5 = {0, -3, 3, 3, 3, 4, 1};
+        int[] thirdArray5 = {0, -3, 7, 4, 5, 4, 3};
+        int[] fourthArray5 = {3, -3, 7, 4, 5, 4, 0};
+        System.out.println(task5(firstArray5));
+        System.out.println(task5(secondArray5));
+        System.out.println(task5(thirdArray5));
+        System.out.println(task5(fourthArray5));
+        System.out.println("----------------------------");
+
+        System.out.println("Задание 6:");
+        int[] firstArray2 = {3, -3, 7, 4, 5, 4, 3};
+        int[] secondArray2 = {1, -5, 1, 4, 1, 4, 100};
+        int[] thirdArray2 = {44, -5, 13, 4, 21, 4, 100};
+        task6(firstArray2);
+        task6(secondArray2);
+        task6(thirdArray2);
         System.out.println("----------------------------");
     }
 
     static void task1() {
         for (int i = 1; i < 100; i++) {
-            System.out.println(i);
+            if (i % 2 != 0) System.out.println(i);
         }
     }
 
@@ -64,7 +77,6 @@ public class PartOne {
         if (firstNum + secondNum == thirdNum) {
             return true;
         }
-
         return false;
     }
 
@@ -81,20 +93,36 @@ public class PartOne {
         if (secondNum > firstNum && thirdNum > secondNum) {
             return true;
         }
-
         return false;
     }
 
-    static void task5(int[] arrayIn) {
-        int[] array = arrayIn;
-        boolean result = false;
-
-        if (array[0] == 3 && array[array.length - 1] == 3) {
-            result = true;
+    static boolean task5(int[] arrayIn) {
+        System.out.println("Array = " + Arrays.toString(arrayIn));
+        if (arrayIn == null || arrayIn.length < 2) {
+            return false;
         }
-        System.out.println("array = " + Arrays.toString(array));
-        System.out.println(result);
+
+        int length = arrayIn.length;
+
+        if (arrayIn[0] == 3 || arrayIn[length - 1] == 3) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
-
+    static void task6(int[] arrayIn) {
+        System.out.println("Array = " + Arrays.toString(arrayIn));
+        for (int elem : arrayIn) {
+            if (elem == 1) {
+                System.out.println("Массив содержит число 1");
+                return;
+            } else if (elem == 3) {
+                System.out.println("Массив содержит число 3");
+                return;
+            }
+        }
+        System.out.println("Массив не содержит число 1 или 3");
+    }
 }
