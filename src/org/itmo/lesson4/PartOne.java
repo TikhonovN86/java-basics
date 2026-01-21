@@ -114,6 +114,11 @@ public class PartOne {
 
     static void task6(int[] arrayIn) {
         System.out.println("Array = " + Arrays.toString(arrayIn));
+        if (arrayIn == null || arrayIn.length == 0) {
+            System.out.println("Некорректный массив");
+            return;
+        }
+
         for (int elem : arrayIn) {
             if (elem == 1) {
                 System.out.println("Массив содержит число 1");
