@@ -14,7 +14,8 @@ public class PartOne {
         System.out.println("----------------------------");
 
         System.out.println("Задание 3:");
-        System.out.println("Результат: " + task3());
+        System.out.println("Результат: " + task3(1, 2, 3));
+        System.out.println("Результат: " + task3(21, 2, 5));
         System.out.println("----------------------------");
 
         System.out.println("Задание 4:");
@@ -36,9 +37,9 @@ public class PartOne {
         int[] firstArray2 = {3, -3, 7, 4, 5, 4, 3};
         int[] secondArray2 = {1, -5, 1, 4, 1, 4, 100};
         int[] thirdArray2 = {44, -5, 13, 4, 21, 4, 100};
-        task6(firstArray2);
-        task6(secondArray2);
-        task6(thirdArray2);
+        System.out.println(task6(firstArray2));
+        System.out.println(task6(secondArray2));
+        System.out.println(task6(thirdArray2));
         System.out.println("----------------------------");
     }
 
@@ -64,16 +65,7 @@ public class PartOne {
         }
     }
 
-    static boolean task3() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Введите первое число: ");
-        int firstNum = sc.nextInt();
-        System.out.print("Введите второе число: ");
-        int secondNum = sc.nextInt();
-        System.out.print("Введите третье число: ");
-        int thirdNum = sc.nextInt();
-
+    static boolean task3(int firstNum, int secondNum, int thirdNum) {
         if (firstNum + secondNum == thirdNum) {
             return true;
         }
@@ -98,7 +90,7 @@ public class PartOne {
 
     static boolean task5(int[] arrayIn) {
         System.out.println("Array = " + Arrays.toString(arrayIn));
-        if (arrayIn == null || arrayIn.length < 2) {
+        if (arrayIn == null) {
             return false;
         }
 
@@ -109,25 +101,19 @@ public class PartOne {
         } else {
             return false;
         }
-
     }
 
-    static void task6(int[] arrayIn) {
+    static boolean task6(int[] arrayIn) {
         System.out.println("Array = " + Arrays.toString(arrayIn));
-        if (arrayIn == null || arrayIn.length == 0) {
-            System.out.println("Некорректный массив");
-            return;
+        if (arrayIn == null) {
+            return false;
         }
 
         for (int elem : arrayIn) {
-            if (elem == 1) {
-                System.out.println("Массив содержит число 1");
-                return;
-            } else if (elem == 3) {
-                System.out.println("Массив содержит число 3");
-                return;
+            if (elem == 1 || elem == 3) {
+                return true;
             }
         }
-        System.out.println("Массив не содержит число 1 или 3");
+        return false;
     }
 }

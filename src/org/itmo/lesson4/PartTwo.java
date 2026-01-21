@@ -26,7 +26,7 @@ public class PartTwo {
         System.out.println("Задание 4:");
         int[] firstArray4 = {12, 4, 7, 1, 12, 4, 1};
         int[] secondArray4 = {1, 2, 21, 5, 2, 5};
-        int[] thirdArray4 = {1, 3, 2, 1, 1};
+        int[] thirdArray4 = {1, 1, 1, 3, 1};
         System.out.println("Первое уникальное число: " + task4(firstArray4));
         System.out.println("Первое уникальное число: " + task4(secondArray4));
         System.out.println("Первое уникальное число: " + task4(thirdArray4));
@@ -76,38 +76,4 @@ public class PartTwo {
     static Integer task4(int[] arrayIn) {
         return findFirstUnique(arrayIn);
     }
-
-    /*
-    Не понял из условия задачи, можем ли мы отсортировать массив перед поиском или нет.
-    Ниже представлен метод, по которому можно найти первое уникальное значение в неотсортированном массиве,
-    но т.к. не понятно, где он может применяться, активным оставил первый метод для поиска;
-     */
-//        static Integer task4(int[] arrayIn) {
-//        System.out.println("Array: " + Arrays.toString(arrayIn));
-//        if (arrayIn == null || arrayIn.length == 0) {
-//            return null;
-//        }
-//
-//        Integer result = null;
-//        boolean found = false;
-//        int length = arrayIn.length;
-//
-//        for (int i = 0; i < length && !found; i++) {
-//            int ai = arrayIn[i];
-//            for (int j = 0; j < length; j++) {
-//                int aj = arrayIn[j];
-//
-//                if (ai == aj && i != j) {
-//                    break;
-//                }
-//
-//                if (j == length - 1) {
-//                    result = ai;
-//                    found = true;
-//                    break;
-//                }
-//            }
-//        }
-//        return result;
-//    }
 }

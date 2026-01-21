@@ -16,7 +16,8 @@ class ArrayUtils {
         }
         return true;
     }
-        static void bubbleSort(int[] arrayIn) {
+
+    static void bubbleSort(int[] arrayIn) {
         if (arrayIn == null || arrayIn.length == 0) {
             return;
         }
@@ -32,12 +33,13 @@ class ArrayUtils {
                 }
             }
         }
-        }
+    }
 
-    static Integer findFirstUnique(int[] arrayIn) {
-        if (!isSortedAsc(arrayIn)) {
-            bubbleSort(arrayIn);
-        }
+    /*
+    Метод возвращает Integer.MIN_VALUE, если уникальный элемент не найден.
+     */
+    static int findFirstUnique(int[] arrayIn) {
+        bubbleSort(arrayIn);
 
         System.out.println("Array: " + Arrays.toString(arrayIn));
 
@@ -57,7 +59,7 @@ class ArrayUtils {
         if (arrayIn[length - 1] != arrayIn[length - 2]) {
             return arrayIn[length - 1];
         }
-        return null;
+        return Integer.MIN_VALUE;
     }
 }
 
