@@ -13,26 +13,31 @@ public class Main {
                 "containing Lorem Ipsum passages, and more recently with desktop publishing software " +
                 "like Aldus PageMaker including versions of Lorem Ipsum.";
 
-//        System.out.println("Задание 1:");
-//        System.out.println(task1(text));;
-//        System.out.println("----------------------------");
-//
-//        System.out.println("Задание 2:");
-//        String firstWord2 = "Ротатор";
-//        String secondWord2 = "Рояль";
-//        System.out.println(task2(firstWord2));;
-//        System.out.println(task2(secondWord2));;
-//        System.out.println("----------------------------");
+        System.out.println("Задание 1:");
+        System.out.println(task1(text));;
+        System.out.println("----------------------------");
 
-//        System.out.println("Задание 3:");
-//        String text3 = "Безо всякого стеснения заявляю: эта бяка — просто бяка, " +
-//                "сплошная бяка, настоящая бяка и окончательная бяка!";
-//        System.out.println(task3(text3));
-//        System.out.println("----------------------------");
+        System.out.println("Задание 2:");
+        String firstWord2 = "ротатор";
+        String secondWord2 = "блокировка";
+        System.out.println(task2(firstWord2));
+        System.out.println(task2(secondWord2));
+        System.out.println("----------------------------");
 
-        System.out.println("Задание 4:");;
-        String firstTextLookingFor4 = "Lorem Ipsum";
-        System.out.println(task4(text, firstTextLookingFor4));
+        System.out.println("Задание 3:");
+        String text3 = "Безо всякого стеснения заявляю: эта бяка — просто бяка, " +
+                "сплошная бяка, настоящая бяка и окончательная бяка!";
+        System.out.println(task3(text3));
+        System.out.println("----------------------------");
+
+        System.out.println("Задание 4:");
+        String textLookingFor4 = "Lorem Ipsum";
+        System.out.println(task4(text, textLookingFor4));
+        System.out.println("----------------------------");
+
+        System.out.println("Задание 5:");
+        String text5 = text.substring(0, text.indexOf("."));
+        System.out.println(task5(text5));
         System.out.println("----------------------------");
     }
 
@@ -45,7 +50,7 @@ public class Main {
                 .replaceAll("[!\"#$%&'()*+,\\-\\n./:;<=>?@\\[\\\\\\]^_`{|}~]", " ")
                 .trim();
 
-        String[] array = formattedString.split(" ");
+        String[] array = formattedString.split("\\s+");
         String result = "";
         int maxLength = 0;
 
@@ -58,19 +63,21 @@ public class Main {
         return result;
     }
 
-
     static boolean task2(String strIn) {
         if (strIn == null || strIn.isEmpty()) {
             return false;
         }
 
-        char[] array = strIn.toLowerCase().toCharArray();
-        int count = 1;
-        for (int i = 0; i < array.length / 2; i++) {
-            if (array[i] != array[array.length - count]) {
+        String str = strIn.toLowerCase();
+        int first = 0;
+        int last = str.length() - 1;
+
+        while (first < last) {
+            if (str.charAt(first) != str.charAt(last)) {
                 return false;
             }
-            count++;
+            first++;
+            last--;
         }
         return true;
     }
@@ -82,36 +89,30 @@ public class Main {
         return strIn.replaceAll("(?i)\\bбяк[а-яё]*\\b", "[вырезано цензурой]");
     }
 
-//    static int task4(String targetText, String textLookingFor) {
-//        String formattedString = targetText
-//                .replaceAll("[!\"#$%&'()*+,\\-./\\n:;<=>?@\\[\\\\\\]^_`{|}~]", "")
-//                .trim()
-//                .replace(textLookingFor, " *** ");
-//
-//        String[] array = formattedString.split(" ");
-//        int count = 0;
-//
-//        for (String s : array) {
-//            if (s.equalsIgnoreCase("***")) {
-//                count++;
-//            }
-//        }
-//        return count;
-//    }
-
-    static int task4(String targetText, String textLookingFor) {
-        if (targetText == null || textLookingFor == null || textLookingFor.isEmpty()) {
+    static int task4(String text, String substring) {
+        if (text == null || substring == null || text.isEmpty() || substring.isEmpty()) {
             return 0;
         }
 
         int count = 0;
-        int index = 0;
-
-        while ((index = targetText.indexOf(textLookingFor, index)) != -1) {
+        int startIndex = 0;
+        while ((startIndex = text.indexOf(substring, startIndex)) != -1) {
             count++;
-            index += textLookingFor.length();
+            startIndex += substring.length();
+        }
+        return count;
+    }
+
+    static String task5(String strIn) {
+        if (strIn == null || strIn.isEmpty()) {
+            return "incorrect input data";
         }
 
-        return count;
+        String[] array = strIn.split(" ");
+        for (int i = 0; i < array.length; i++) {
+            array[i] = new StringBuilder(array[i]).reverse().toString();
+        }
+
+        return String.join(" ", array);
     }
 }
