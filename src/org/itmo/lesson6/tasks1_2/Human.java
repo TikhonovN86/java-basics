@@ -1,4 +1,4 @@
-package org.itmo.lesson6.task1_2;
+package org.itmo.lesson6.tasks1_2;
 
 public abstract class Human implements BankOperations {
     private final String firstName;
@@ -16,6 +16,6 @@ public abstract class Human implements BankOperations {
     public String getLastName() {
         return lastName;
     }
-    //Отсавляем на стороне абстр. класса (?)
+
     public abstract void printInfo();
 }

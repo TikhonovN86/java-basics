@@ -1,4 +1,4 @@
-package org.itmo.lesson6.task1_2;
+package org.itmo.lesson6.tasks1_2;
 
 //Реализация задания 2.
 public interface BankOperations {
