@@ -1,7 +1,5 @@
 package org.itmo.lesson5;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         String text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n" +
@@ -14,34 +12,36 @@ public class Main {
                 "like Aldus PageMaker including versions of Lorem Ipsum.";
 
         System.out.println("Задание 1:");
-        System.out.println(task1(text));;
+        System.out.println(findLongestWord(text));
         System.out.println("----------------------------");
 
         System.out.println("Задание 2:");
         String firstWord2 = "ротатор";
         String secondWord2 = "блокировка";
-        System.out.println(task2(firstWord2));
-        System.out.println(task2(secondWord2));
+        System.out.println(checkPalindrome(firstWord2));
+        System.out.println(checkPalindrome(secondWord2));
         System.out.println("----------------------------");
 
         System.out.println("Задание 3:");
         String text3 = "Безо всякого стеснения заявляю: эта бяка — просто бяка, " +
                 "сплошная бяка, настоящая бяка и окончательная бяка!";
-        System.out.println(task3(text3));
+        String target = "бяка";
+        String replacement = "[вырезано цензурой]";
+        System.out.println(replaceAllWords(text3, target, replacement));
         System.out.println("----------------------------");
 
         System.out.println("Задание 4:");
         String textLookingFor4 = "Lorem Ipsum";
-        System.out.println(task4(text, textLookingFor4));
+        System.out.println(countSubstringOccurrences(text, textLookingFor4));
         System.out.println("----------------------------");
 
         System.out.println("Задание 5:");
         String text5 = text.substring(0, text.indexOf("."));
-        System.out.println(task5(text5));
+        System.out.println(reverseWords(text5));
         System.out.println("----------------------------");
     }
 
-    static String task1(String strIn) {
+    static String findLongestWord(String strIn) {
         if (strIn == null || strIn.isEmpty()) {
             return "incorrect input data";
         }
@@ -49,7 +49,6 @@ public class Main {
         String formattedString = strIn
                 .replaceAll("[!\"#$%&'()*+,\\-\\n./:;<=>?@\\[\\\\\\]^_`{|}~]", " ")
                 .trim();
-
         String[] array = formattedString.split("\\s+");
         String result = "";
         int maxLength = 0;
@@ -63,33 +62,25 @@ public class Main {
         return result;
     }
 
-    static boolean task2(String strIn) {
-        if (strIn == null || strIn.isEmpty()) {
+    static boolean checkPalindrome(String input) {
+        if (input == null || input.isEmpty()) {
             return false;
         }
+        String reversed = new StringBuilder(input).reverse().toString();
 
-        String str = strIn.toLowerCase();
-        int first = 0;
-        int last = str.length() - 1;
-
-        while (first < last) {
-            if (str.charAt(first) != str.charAt(last)) {
-                return false;
-            }
-            first++;
-            last--;
-        }
-        return true;
+        if (input.equals(reversed)) return true;
+        return false;
     }
 
-    static String task3(String strIn) {
-        if (strIn == null || strIn.isEmpty()) {
+    static String replaceAllWords(String text, String target, String replacement) {
+        if (text == null || text.isEmpty() || target == null || target.isEmpty() ||
+                replacement == null || replacement.isEmpty()) {
             return "incorrect input data";
         }
-        return strIn.replaceAll("(?i)\\bбяк[а-яё]*\\b", "[вырезано цензурой]");
+        return text.replaceAll(target, replacement);
     }
 
-    static int task4(String text, String substring) {
+    static int countSubstringOccurrences(String text, String substring) {
         if (text == null || substring == null || text.isEmpty() || substring.isEmpty()) {
             return 0;
         }
@@ -103,7 +94,7 @@ public class Main {
         return count;
     }
 
-    static String task5(String strIn) {
+    static String reverseWords(String strIn) {
         if (strIn == null || strIn.isEmpty()) {
             return "incorrect input data";
         }
