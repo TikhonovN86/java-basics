@@ -3,8 +3,8 @@ package org.itmo.lesson6.task5;
 import java.util.Scanner;
 
 public class ParentClass {
-    Integer age;
-    String name;
+    protected Integer age;
+    protected String name;
     protected Scanner sc;
 
     public ParentClass() {
