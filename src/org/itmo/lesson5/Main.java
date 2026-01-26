@@ -1,5 +1,7 @@
 package org.itmo.lesson5;
 
+import java.util.regex.Pattern;
+
 public class Main {
     public static void main(String[] args) {
         String text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n" +
@@ -69,6 +71,7 @@ public class Main {
         String reversed = new StringBuilder(input).reverse().toString();
 
         if (input.equals(reversed)) return true;
+
         return false;
     }
 
@@ -77,14 +80,13 @@ public class Main {
                 replacement == null || replacement.isEmpty()) {
             return "incorrect input data";
         }
-        return text.replaceAll(target, replacement);
+        return text.replace(target, replacement);
     }
 
     static int countSubstringOccurrences(String text, String substring) {
         if (text == null || substring == null || text.isEmpty() || substring.isEmpty()) {
             return 0;
         }
-
         int count = 0;
         int startIndex = 0;
         while ((startIndex = text.indexOf(substring, startIndex)) != -1) {
